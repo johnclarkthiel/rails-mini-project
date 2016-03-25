@@ -28,19 +28,14 @@
 <% if current_user && current_user.id == @user.id %>
 	<h2>New search:</h2>
 	<input type='hidden' value='<%=@user.id%>' class='userID'>
-<!-- 	<form action='/searches' method='POST'> -->
-		<input type='text' placeholder='Enter your zip code' class='searchparams'>
-		<button class='yelpreq'>Get top twenty bars in your area</button>
-<!-- 	</form> -->
-	<!-- NEED SOME MORE FUNCTIONALITY HERE ... SOMETHING POPS UP  -->
-	<ul>
-	<% if @search_results != nil %>
-		<% @search_results.each do |result| %>
-		<li><%=result.name%></li>
-		<div><%=result.rating%></div>
-		<div><%=result.snippet_text%></div>
-		<% end %>
-	<% end %>
 
-	</ul>
+  	<input type='text' placeholder='Enter your zip code' class='searchparams'>
+		<button class='yelpreq'>Get top twenty bars in your area</button>
+
+
+<!-- 	<form action='/searches' method='POST'>
+
+	</form> -->
+	<!-- NEED SOME MORE FUNCTIONALITY HERE ... SOMETHING POPS UP  -->
+		<div class="results"></div>
 <% end %>

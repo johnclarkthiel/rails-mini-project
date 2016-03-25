@@ -1,0 +1,11 @@
+	<ul>
+	<% if @search_results != nil %>
+		<% @search_results.each do |result| %>
+		<li><%=result.name%></li>
+		<div><%=result.rating%></div>
+		<div><%=result.snippet_text%></div>
+		<% end %>
+		<% else %>
+		<div>Waiting for results</div>
+	<% end %>
+	</ul>

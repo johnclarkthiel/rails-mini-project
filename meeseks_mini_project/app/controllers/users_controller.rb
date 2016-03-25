@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 	respond_to :json, :html, :js
 	helper_method :yelp_search
+	@@search_results = nil
 
 	def index
 		p '--------------------'
@@ -12,7 +13,6 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@search_results = nil
 	end
 
 	def new
@@ -32,15 +32,17 @@ class UsersController < ApplicationController
 	end
 
 	def yelpsearch
-		flash[:notice] = 'Yelp search hit'
-		@search = params[:yelp_search]
-		p "THIS IS THE SEARCH RETURN >>>>>", @search
-		@search_results = Yelp.client.search(@search, { term: 'bar', sort: 2})
-		p @search_results
-		respond_to do |format|
-			format.js {render nothing: true}
-		end		
-
+			flash[:notice] = 'Yelp search hit'
+			@search = params[:yelp_search]
+			p "THIS IS THE SEARCH RETURN >>>>>", @search
+			search_results = Yelp.client.search(@search, { term: 'bar', sort: 2})
+			@search_results = search_results.businesses
+			p @search_results
+			respond_to do |format|
+				format.js {render nothing: true}
+				format.html { render partial: "results"} 
+				format.json {render :json => @search_results}
+			end			
 	end
 
 	private
@@ -49,6 +51,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@friends = @user.friends
 		@searches = @user.searches
+		@search_results
 		# respond_with @user, @friends, @searches
 	end
 
