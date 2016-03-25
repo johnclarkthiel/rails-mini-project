@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   root "users#index"
   get "/about" => "static#about"
+  post "/users/yelpsearch" => "users#yelpsearch"
 end
 
 #                   Prefix Verb   URI Pattern                                 Controller#Action
