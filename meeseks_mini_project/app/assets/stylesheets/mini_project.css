@@ -1,0 +1,14 @@
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+body {
+	font-family: impact;
+	font-weight: bold;
+	color: purple;
+}
+
+em {
+	color: grey;
+}

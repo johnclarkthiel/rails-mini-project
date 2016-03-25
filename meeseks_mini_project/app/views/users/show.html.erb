@@ -1,0 +1,26 @@
+<h1><%=@user.email%>'s page</h1>
+
+<h2><%=@user.email%>'s friends:</h2>
+<% @friends.each do |friend| %>
+<div><%=friend.name%> ~ <div><%=friend.email%></div></div>
+<% end %>
+
+<% if current_user %> 
+	<% if current_user.id == @user.id %>
+		<h2>Your recent searches:</h2>
+		<% @searches.each do |search| %>
+		<div>Bar searched: <%=search.bar_name%></div>
+		<div>Rating: <%=search.rating%></div>
+		<div>Comment: <%=search.review%></div>
+		<% end %>
+	<% elsif current_user && current_user.id != @user.id %>
+	<h2><%=@user.email%>'s searches:</h2>
+	<% @searches.each do |search| %>
+		<div>Bar searched: <%=search.bar_name%></div>
+		<div>Rating: <%=search.rating%></div>
+		<div>Comment: <%=search.review%></div>
+		<% end %>
+	<% end %> 
+<% elsif !current_user %>
+<h2>Sign up to see what <%=@user.email%>'s been searching</h2>
+<% end %>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :friends
 
   root "users#index"
+  get "/about" => "static#about"
 end
 
 #                   Prefix Verb   URI Pattern                                 Controller#Action
