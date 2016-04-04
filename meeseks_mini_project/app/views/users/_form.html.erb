@@ -1,0 +1,7 @@
+<form action='/users/<%= @user.id %>/searches' method='POST'>
+	<input type='hidden' name='bar_name' value="data[i].name">
+	<input type='hidden' name='rating' value="data[i].rating">
+	<input type='hidden' name='review' value="data[i].snippet_text">
+	<input type='hidden' name='user_id' value='<%= @user.id %>'>
+	<button>Save search</button>
+</form>

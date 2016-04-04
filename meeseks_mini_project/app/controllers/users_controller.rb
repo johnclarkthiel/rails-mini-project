@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 	end
 
 	def new
+		# @search = Search.new
 	end
 
 	def create

@@ -1,9 +1,11 @@
 console.log('HELLO, GOODBYE');
 
 $(function(){
-	$('.crap').click(function(){
-		console.log("CRAP WORKING");
-	})
+	// $('.crap').click(function(){
+	// 	console.log("CRAP WORKING");
+	// })
+
+	var userID = $('.userID').val();
 
 	$('.yelpreq').click(function(){
 		console.log('YELP REQUEST BUTTON WORKING');
@@ -23,9 +25,16 @@ $(function(){
 				$('.results').append("<p>Bar city: "+data[i].location.city+"</p>");
 				$('.results').append("<p>Bar phone: "+data[i].display_phone+"</p>");
 				$('.results').append("<p>Bar yelp site: "+data[i].url+"</p>");
-				$('.results').append("<form> </form>");
+				$('.results').append("<form action='/users/"+userID+"/searches' method='POST'><input type='hidden' name='bar_name' value="+data[i].name+"/><input type='hidden' name='bar_name' value="+data[i].name+"/><input type='hidden' name='rating' value="+data[i].rating+"/><input type='hidden' name='review' value="+data[i].snippet_text+"/><input type='hidden' name='user_id' value="+userID+"/><button>Save search</button></form>");
+				// $('.results').append("<input type='hidden' name='bar_name' value="+data[i].name+"/>");
+				// $('.results').append("<input type='hidden' name='bar_name' value="+data[i].name+"/>");
+				// $('.results').append("<input type='hidden' name='rating' value="+data[i].rating+"/>");
+				// $('.results').append("<input type='hidden' name='review' value="+data[i].snippet_text+"/>");
+				// $('.results').append("<input type='hidden' name='user_id' value="+userID+"/>");
+				// $('.results').append("<button>Save search</button>");
+				// $('.results').append("</form>");
 				$('.results').append("<br/><hr/>");
-			}
+				}
 			},
 			error: function(err) {
 				console.log(err);
