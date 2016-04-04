@@ -1,48 +1,54 @@
-<h1><%=@user.email%>'s page</h1>
+<div class='row'>
+	<div class='col-xs-12 col-md-8' id='stuff'>
+	<h1><%=@user.email%>'s page</h1>
 
-<h2><%=@user.email%>'s friends:</h2>
-<% @friends.each do |friend| %>
-<div><%=friend.name%> ~ <div><%=friend.email%></div></div>
+	<h2><%=@user.email%>'s friends:</h2>
+	<% @friends.each do |friend| %>
+	<div><%=friend.name%> ~ <div><%=friend.email%></div></div>
+		<% if current_user %> 
+			<a href="/friends/<%=friend.id%>/edit">Edit friend</a>
+		<% end %> 
+	<% end %>
+	<br/><br/>
 	<% if current_user %> 
-		<a href="/friends/<%=friend.id%>/edit">Edit friend</a>
+		<a href="/users/<%=@user.id%>/new/friend">Add a friend</a>
 	<% end %> 
-<% end %>
-<br/><br/>
-<% if current_user %> 
-	<a href="/users/<%=@user.id%>/new/friend">Add a friend</a>
-<% end %> 
 
-<% if current_user %> 
-	<% if current_user.id == @user.id %>
-		<h2>Your recent searches:</h2>
+	<% if current_user %> 
+		<% if current_user.id == @user.id %>
+			<h2>Your recent searches:</h2>
+			<% @searches.each do |search| %>
+			<div>Bar searched: <%=search.bar_name%></div>
+			<div>Rating: <%=search.rating%></div>
+			<div>Comment: <%=search.review%></div>
+			<% end %>
+		<% elsif current_user && current_user.id != @user.id %>
+		<h2><%=@user.email%>'s searches:</h2>
 		<% @searches.each do |search| %>
-		<div>Bar searched: <%=search.bar_name%></div>
-		<div>Rating: <%=search.rating%></div>
-		<div>Comment: <%=search.review%></div>
-		<% end %>
-	<% elsif current_user && current_user.id != @user.id %>
-	<h2><%=@user.email%>'s searches:</h2>
-	<% @searches.each do |search| %>
-		<div>Bar searched: <%=search.bar_name%></div>
-		<div>Rating: <%=search.rating%></div>
-		<div>Comment: <%=search.review%></div>
-		<% end %>
-	<% end %> 
-<% elsif !current_user %>
-<h2>Sign up to see what <%=@user.email%>'s been searching</h2>
-<% end %>
+			<div>Bar searched: <%=search.bar_name%></div>
+			<div>Rating: <%=search.rating%></div>
+			<div>Comment: <%=search.review%></div>
+			<% end %>
+		<% end %> 
+	<% elsif !current_user %>
+	<h2>Sign up to see what <%=@user.email%>'s been searching</h2>
+	<% end %>
+</div>
 
-<% if current_user && current_user.id == @user.id %>
-	<h2>New search:</h2>
-	<input type='hidden' value='<%=@user.id%>' class='userID'>
+<div class='col-xs-6 col-md-4'>
+	<% if current_user && current_user.id == @user.id %>
+		<h2>New search:</h2>
+		<input type='hidden' value='<%=@user.id%>' class='userID'>
 
-  	<input type='text' placeholder='Enter your zip code' class='searchparams'>
-		<button class='yelpreq'>Get top twenty bars in your area</button>
-		<!-- <button class='crap'>Crap</button> -->
+	  	<input type='text' placeholder='Enter your zip code' class='searchparams'>
+			<button class='yelpreq'>Get top twenty bars in your area</button>
+			<!-- <button class='crap'>Crap</button> -->
 
-<!-- 	<form action='/searches' method='POST'>
+	<!-- 	<form action='/searches' method='POST'>
 
-	</form> -->
-	<!-- NEED SOME MORE FUNCTIONALITY HERE ... SOMETHING POPS UP  -->
-		<div class="results"></div>
-<% end %>
+		</form> -->
+		<!-- NEED SOME MORE FUNCTIONALITY HERE ... SOMETHING POPS UP  -->
+			<div class="results"></div>
+	<% end %>
+	</div>
+</div>

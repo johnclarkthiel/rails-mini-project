@@ -6,9 +6,13 @@
 body {
 	font-family: impact;
 	font-weight: bold;
-	color: purple;
+	color: white;
+	background-image: url("http://www.moviecricket.com/wp-content/uploads/2014/07/Full-Metal-Jacket-Stanely-Kubrick-Top-25-Best-Book-To-Film-Adaptations.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 em {
-	color: grey;
+	color: white;
+	text-shadow: 1px 1px black;
 }
