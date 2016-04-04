@@ -1,0 +1,8 @@
+<h1>Add a friend</h1>
+
+<%= form_for @adding_friend do |form| %>
+	Name: <%= form.text_field :name %><br/>
+	Email: <%= form.text_area :email %><br/>
+	<%= form.hidden_field :user_id, :value => current_user.id %>
+	<%= form.submit %>
+<% end %>

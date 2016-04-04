@@ -9,11 +9,18 @@ class UsersController < ApplicationController
 	end
 
 	def new
+		# search = Search.new
 	end
 
 	def create
-		# search = params[:yelp_search]
-		# p search
+		search = Search.create(:bar_name, :rating, :review, :user_id)
+
+		if search.save
+			redirect_to root_path
+		else
+			redirect_to root_path
+		end
+		p search
 	end
 
 	def edit
@@ -27,6 +34,12 @@ class UsersController < ApplicationController
 
 	def yelpsearch
 
+	end
+
+	private 
+
+	def search_params
+		params.require(:search).permit(:bar_name, :rating, :review, :user_id)
 	end
 
 

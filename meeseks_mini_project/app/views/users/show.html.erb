@@ -3,6 +3,9 @@
 <h2><%=@user.email%>'s friends:</h2>
 <% @friends.each do |friend| %>
 <div><%=friend.name%> ~ <div><%=friend.email%></div></div>
+	<% if current_user %> 
+		<a href="/users/<%=@user.id%>/new/friend">Add a friend</a>
+		<% end %> 
 <% end %>
 
 <% if current_user %> 

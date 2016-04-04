@@ -25,7 +25,7 @@ $(function(){
 				$('.results').append("<p>Bar city: "+data[i].location.city+"</p>");
 				$('.results').append("<p>Bar phone: "+data[i].display_phone+"</p>");
 				$('.results').append("<p>Bar yelp site: "+data[i].url+"</p>");
-				$('.results').append("<form action='/users/"+userID+"/searches' method='POST'><input type='hidden' name='bar_name' value="+data[i].name+"/><input type='hidden' name='bar_name' value="+data[i].name+"/><input type='hidden' name='rating' value="+data[i].rating+"/><input type='hidden' name='review' value="+data[i].snippet_text+"/><input type='hidden' name='user_id' value="+userID+"/><button>Save search</button></form>");
+				$('.results').append("<form action='/users/"+userID+"/add_search' method='POST'><input type='hidden' name='bar_name' value="+data[i].name+"/><input type='hidden' name='rating' value="+data[i].rating+"/><input type='hidden' name='review' value="+data[i].snippet_text+"/><input type='hidden' name='user_id' value="+userID+"/><button>Save search</button></form>");
 				// $('.results').append("<input type='hidden' name='bar_name' value="+data[i].name+"/>");
 				// $('.results').append("<input type='hidden' name='bar_name' value="+data[i].name+"/>");
 				// $('.results').append("<input type='hidden' name='rating' value="+data[i].rating+"/>");

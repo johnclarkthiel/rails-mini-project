@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	skip_before_filter :verify_authenticity_token, :only => :create
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 	respond_to :json, :html, :js
 	helper_method :yelp_search
@@ -46,6 +47,18 @@ class UsersController < ApplicationController
 			end			
 	end
 
+	def add_search
+		@search = Search.new(search_params)
+
+		if search.save
+			redirect_to root_path
+		else
+			redirect_to root_path
+		end
+		p search
+		
+	end
+
 	private
 
 	def set_user
@@ -56,5 +69,8 @@ class UsersController < ApplicationController
 		# respond_with @user, @friends, @searches
 	end
 
+	def search_params
+		params.require(:search).permit(:bar_name, :rating, :review, :user_id)
+	end
 
 end
