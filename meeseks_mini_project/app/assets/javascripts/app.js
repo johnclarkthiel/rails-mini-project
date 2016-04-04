@@ -19,6 +19,7 @@ $(function(){
 				$('.results').append("<p>Bar city: "+data[i].location.city+"</p>");
 				$('.results').append("<p>Bar phone: "+data[i].display_phone+"</p>");
 				$('.results').append("<p>Bar yelp site: "+data[i].url+"</p>");
+				$('.results').append("<form> </form>");
 				$('.results').append("<br/><hr/>");
 			}
 			},
