@@ -6,3 +6,5 @@
 	<%= form.hidden_field :user_id, :value => current_user.id %>
 	<%= form.submit %>
 <% end %>
+
+<button><%=link_to 'Delete', @friend, :method => 'delete', class: 'btn btn-warning'%></button>

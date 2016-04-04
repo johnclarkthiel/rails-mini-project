@@ -21,13 +21,17 @@ class FriendsController < ApplicationController
 
 	def update
 		@friend = Friend.find(params[:id])
-		
+
 		if @friend.update(friend_params)
 			redirect_to root_path
 		end
 	end
 
 	def destroy
+		@friend = Friend.find(params[:id])
+		if @friend.destroy
+			redirect_to root_path
+		end
 	end
 
 	private
