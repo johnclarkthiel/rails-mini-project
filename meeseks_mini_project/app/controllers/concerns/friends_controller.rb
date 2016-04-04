@@ -3,7 +3,7 @@ class FriendsController < ApplicationController
 
 	def new
 		@user_id = params[:user_id]
-		
+
 		@adding_friend = Friend.new
 	end
 
@@ -16,9 +16,15 @@ class FriendsController < ApplicationController
 	end
 
 	def edit
+		@friend = Friend.find(params[:id])
 	end
 
 	def update
+		@friend = Friend.find(params[:id])
+		
+		if @friend.update(friend_params)
+			redirect_to root_path
+		end
 	end
 
 	def destroy
