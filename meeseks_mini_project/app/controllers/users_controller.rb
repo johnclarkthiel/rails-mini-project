@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 	end
 
 	def add_search
-		@search = Search.new(search_params)
+		search = Search.create("bar_name" => params[:bar_name], "rating" => params[:rating], "review" => params[:review], "user_id" => params[:user_id])
 
 		if search.save
 			redirect_to root_path
@@ -69,8 +69,8 @@ class UsersController < ApplicationController
 		# respond_with @user, @friends, @searches
 	end
 
-	def search_params
-		params.require(:search).permit(:bar_name, :rating, :review, :user_id)
-	end
+	# def search_params
+	# 	params.require(:searches).permit(:bar_name, :rating, :review, :user_id)
+	# end
 
 end
