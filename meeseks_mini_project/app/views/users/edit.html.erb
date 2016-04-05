@@ -1,0 +1,13 @@
+<h1>Edit your search</h1>
+
+<%= form_for @search do |form| %>
+	Name: <%= form.text_field :bar_name %><br/>
+	Rating: <%= form.text_field :rating %><br/>
+	Review: <%= form.text_field :review %><br/>
+	<%= form.hidden_field :user_id, :value => current_user.id %>
+	<%= form.submit %>
+<% end %>
+
+<br/><br/>
+
+<button><%=link_to 'Delete', @search, :method => 'delete', class: 'btn btn-warning'%></button>

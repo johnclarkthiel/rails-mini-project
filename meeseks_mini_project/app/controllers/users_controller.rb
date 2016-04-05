@@ -25,13 +25,10 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+		@search = Search.find(params[:id])
 	end
 
-	def update
-	end
 
-	def destroy
-	end
 
 	def yelpsearch
 			flash[:notice] = 'Yelp search hit'

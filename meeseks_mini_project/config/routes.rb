@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   get "/about" => "static#about"
   post "/users/yelpsearch" => "users#yelpsearch"
   post "/users/:id/add_search" => "users#add_search"
-  get "users/:user_id/new/friend" => "friends#new"
-  post "users/:user_id/add_friend" => "friends#create"
+  get "/users/:user_id/new/friend" => "friends#new"
+  post "/users/:user_id/add_friend" => "friends#create"
+  get "/users/searches/:id/edit" => "users#edit"
+  patch "/users/searches/:id" => "users#update"
+  delete "/users/searches/:id" => "users#destroy"
 end
 
 #                   Prefix Verb   URI Pattern                                 Controller#Action
@@ -71,3 +74,6 @@ end
 #                          POST   /users/:id/add_search(.:format)             users#add_search
 #                          GET    /users/:user_id/new/friend(.:format)        friends#new
 #                          POST   /users/:user_id/add_friend(.:format)        friends#create
+#                          GET    /users/searches/:id/edit(.:format)          users#edit
+#                          PATCH  /users/searches/:id(.:format)               users#update
+#                          DELETE /users/searches/:id(.:format)               users#destroy

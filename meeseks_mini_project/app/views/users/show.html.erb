@@ -21,6 +21,7 @@
 			<div>Bar searched: <%=search.bar_name%></div>
 			<div>Rating: <%=search.rating%></div>
 			<div>Comment: <%=search.review%></div>
+			<a href="/users/searches/<%=search.id%>/edit">Edit search</a>
 			<% end %>
 		<% elsif current_user && current_user.id != @user.id %>
 		<h2><%=@user.email%>'s searches:</h2>

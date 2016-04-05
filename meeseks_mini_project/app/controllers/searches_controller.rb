@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class SearchesController < ApplicationController
 
 	def index
 
@@ -13,23 +13,29 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		search = Search.create(:bar_name, :rating, :review, :user_id)
+		# search = Search.create(:bar_name, :rating, :review, :user_id)
 
-		if search.save
-			redirect_to root_path
-		else
-			redirect_to root_path
-		end
-		p search
-	end
-
-	def edit
+		# if search.save
+		# 	redirect_to root_path
+		# else
+		# 	redirect_to root_path
+		# end
+		# p search
 	end
 
 	def update
+		@search = Search.find(params[:id])
+
+		if @search.update(search_params)
+			redirect_to root_path
+		end
 	end
 
 	def destroy
+		@search = Search.find(params[:id])
+		if @search.destroy
+			redirect_to root_path
+		end
 	end
 
 	def yelpsearch
